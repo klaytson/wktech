@@ -121,6 +121,13 @@
         <DCCReference Include="controllers\ControllerPedidos.pas"/>
         <DCCReference Include="dao\ClasseDAO.pas"/>
         <DCCReference Include="controllers\ControllerDAO.pas"/>
+        <DCCReference Include="entities\ClassePedidosProdutos.pas"/>
+        <DCCReference Include="views\uFrmSelecaoProdutos.pas">
+            <Form>FrmSelecaoProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="controllers\ControllerPedidosProdutos.pas"/>
+        <DCCReference Include="controllers\ControllerProdutos.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -14,7 +14,11 @@ uses
   uFrmSelecaoCliente in 'views\uFrmSelecaoCliente.pas' {FrmSelecaoCliente},
   ControllerPedidos in 'controllers\ControllerPedidos.pas',
   ClasseDAO in 'dao\ClasseDAO.pas',
-  ControllerDAO in 'controllers\ControllerDAO.pas';
+  ControllerDAO in 'controllers\ControllerDAO.pas',
+  ClassePedidosProdutos in 'entities\ClassePedidosProdutos.pas',
+  uFrmSelecaoProdutos in 'views\uFrmSelecaoProdutos.pas' {FrmSelecaoProdutos},
+  ControllerPedidosProdutos in 'controllers\ControllerPedidosProdutos.pas',
+  ControllerProdutos in 'controllers\ControllerProdutos.pas';
 
 {$R *.res}
 
@@ -24,5 +28,6 @@ begin
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TDMPrincipal, DMPrincipal);
   Application.CreateForm(TFrmSelecaoCliente, FrmSelecaoCliente);
+  Application.CreateForm(TFrmSelecaoProdutos, FrmSelecaoProdutos);
   Application.Run;
 end.

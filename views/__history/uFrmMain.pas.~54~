@@ -1,0 +1,62 @@
+unit uFrmMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids, uDMPrincipal,
+  Vcl.DBGrids, ClasseClientes, ControllerDAO;
+
+type
+  TFrmMain = class(TForm)
+    btnNovoPedido: TButton;
+    GroupBox1: TGroupBox;
+    LblCodigo: TLabel;
+    LblNomeCliente: TLabel;
+    EdtDataEmissao: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    EdtValorTotal: TEdit;
+    LblNumeroPedido: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    GroupBox2: TGroupBox;
+    BtnSelecao: TButton;
+    procedure btnNovoPedidoClick(Sender: TObject);
+    procedure BtnSelecaoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Cliente: TClientes;
+  end;
+
+var
+  FrmMain: TFrmMain;
+
+implementation
+
+{$R *.dfm}
+
+uses ClasseProdutos, uFrmSelecaoCliente, uFrmSelecaoProdutos;
+
+procedure TFrmMain.btnNovoPedidoClick(Sender: TObject);
+var
+  ObjDAO: TControllerDAO;
+begin
+ ObjDAO := TControllerDAO.create();
+ ObjDAO.IniciarTransacao(DMPrincipal.FDConnection);
+
+ FrmSelecaoCliente := TFrmSelecaoCliente.create(Application);
+ FrmSelecaoCliente.showModal;
+end;
+
+procedure TFrmMain.BtnSelecaoClick(Sender: TObject);
+begin
+  FrmSelecaoProdutos := TFrmSelecaoProdutos.create(Application);
+  FrmSelecaoProdutos.ShowModal;
+  FrmSelecaoProdutos.Free;
+end;
+
+end.

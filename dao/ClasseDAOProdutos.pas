@@ -5,23 +5,54 @@ interface
 Uses ClasseProdutos;
 
 Type
-  DAOClientes = class
+  TDAOProdutos = class
 
     public
-      procedure Salvar(Cliente: TProdutos);
-      function Consultar(Produto: TProdutos): TProdutos;
+      procedure Salvar(Produto: TProdutos);
+      procedure Inserir(Produto: TProdutos);
+      function Consultar(Produto: String): TProdutos;
   end;
 
 implementation
 
+Uses uDMPrincipal;
+
 { DAOClientes }
 
-function DAOClientes.Consultar(Produto: TProdutos): TProdutos;
+function TDAOProdutos.Consultar(Produto: String): TProdutos;
+var
+  ObjProduto: TProdutos;
+begin
+  ObjProduto := TProdutos.Create();
+
+  With DmPrincipal.QryProdutos Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT CODIGO, DESCRICAO, PRECOVENDA FROM PRODUTOS ' +
+        'WHERE DESCRICAO LIKE :DESC');
+
+      ParamByName('DESC').AsString := '%' + Produto + '%';
+      Open;
+
+        With ObjProduto Do
+        begin
+          Codigo := FieldByName('CODIGO').AsInteger;
+          Descricao := FieldByName('DESCRICAO').AsString;
+          PrecoVenda := FieldByName('PRECOVENDA').AsString;
+        end;
+    end;
+
+    Result := ObjProduto;
+
+end;
+
+procedure TDAOProdutos.Inserir(Produto: TProdutos);
 begin
 
 end;
 
-procedure DAOClientes.Salvar(Cliente: TProdutos);
+procedure TDAOProdutos.Salvar(Produto: TProdutos);
 begin
 
 end;

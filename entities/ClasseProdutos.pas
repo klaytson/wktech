@@ -13,7 +13,6 @@ Type
 
   public
     constructor Create;
-    procedure Salvar(const objetoProduto: TProdutos);
 
     // propriedades da classe (semelhante aos getters and setters)
     property Codigo: integer read FCodigo write FCodigo;
@@ -29,11 +28,6 @@ uses
 { TProdutos }
 
 constructor TProdutos.Create;
-begin
-
-end;
-
-procedure TProdutos.Salvar(const objetoProduto: TProdutos);
 begin
 
 end;

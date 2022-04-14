@@ -1,0 +1,61 @@
+unit ClasseDAOProdutos;
+
+interface
+
+Uses ClasseProdutos;
+
+Type
+  TDAOProdutos = class
+
+    public
+      procedure Salvar(Produto: TProdutos);
+      procedure Inserir(Produto: TProdutos);
+      function Consultar(Produto: String): TProdutos;
+  end;
+
+implementation
+
+Uses uDMPrincipal;
+
+{ DAOClientes }
+
+function TDAOProdutos.Consultar(Produto: String): TProdutos;
+var
+  DAOProduto: TProdutos;
+begin
+  DAOProduto := TProdutos.Create();
+
+  With DmPrincipal.QryProdutos Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT CODIGO, DESCRICAO, PRECOVENDA FROM PRODUTOS ' +
+        'WHERE NOME LIKE :NOME');
+
+      ParamByName('NOME').AsString := '%' + nomeCliente + '%';
+      Open;
+
+        With cliente Do
+        begin
+          Codigo := FieldByName('CODIGO').AsInteger;
+          Nome := FieldByName('NOME').AsString;
+          Cidade := FieldByName('CIDADE').AsString;
+          UF := FieldByName('UF').AsString;
+        end;
+    end;
+
+    Result := cliente;
+
+end;
+
+procedure TDAOProdutos.Inserir(Produto: TProdutos);
+begin
+
+end;
+
+procedure TDAOProdutos.Salvar(Produto: TProdutos);
+begin
+
+end;
+
+end.

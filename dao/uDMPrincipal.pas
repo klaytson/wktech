@@ -21,6 +21,8 @@ type
     QryAux: TFDQuery;
     QryClientes: TFDQuery;
     DtsClientes: TDataSource;
+    QryProdutos: TFDQuery;
+    DtsProdutos: TDataSource;
   private
     { Private declarations }
   public

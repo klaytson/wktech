@@ -15,7 +15,6 @@ object DMPrincipal: TDMPrincipal
     Top = 44
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select * from produtos')
@@ -25,6 +24,7 @@ object DMPrincipal: TDMPrincipal
       FieldName = 'Codigo'
       Origin = 'Codigo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FDQuery1Descricao: TStringField
       FieldName = 'Descricao'
@@ -58,5 +58,19 @@ object DMPrincipal: TDMPrincipal
     DataSet = QryClientes
     Left = 48
     Top = 208
+  end
+  object QryProdutos: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM PRODUTOS')
+    Left = 140
+    Top = 96
+  end
+  object DtsProdutos: TDataSource
+    AutoEdit = False
+    DataSet = QryProdutos
+    Left = 140
+    Top = 148
   end
 end

@@ -73,6 +73,7 @@ begin
   FrmMain.LblNomeCliente.Caption := objCliente.Nome;
   FrmMain.EdtDataEmissao.Text := DateTimeToStr(Date());
   FrmMain.LblNumeroPedido.Caption := IntToStr(ControllerPedido.ObterNumeroPedido());
+  FrmMain.BtnSelecao.Visible := True;
 end;
 
 procedure TFrmSelecaoCliente.FormShow(Sender: TObject);

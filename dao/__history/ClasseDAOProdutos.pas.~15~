@@ -1,0 +1,47 @@
+unit ClasseDAOProdutos;
+
+interface
+
+Uses ClasseProdutos;
+
+Type
+  TDAOProdutos = class
+
+    public
+      procedure Salvar(Produto: TProdutos);
+      procedure Inserir(Produto: TProdutos);
+      function Consultar(Produto: TProdutos): TProdutos;
+  end;
+
+implementation
+
+Uses uDMPrincipal;
+
+{ DAOClientes }
+
+function TDAOProdutos.Consultar(Produto: TProdutos): TProdutos;
+var
+  DAOProduto: TProdutos;
+begin
+  DAOProduto := TProdutos.Create();
+
+  With DmPrincipal.QryProdutos Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT CODIGO, NOME, CIDADE, UF FROM CLIENTES ' +
+        'WHERE NOME LIKE :NOME');
+
+
+    end;
+
+    //Result := cliente;
+
+end;
+
+procedure TDAOProdutos.Salvar(Produto: TProdutos);
+begin
+
+end;
+
+end.

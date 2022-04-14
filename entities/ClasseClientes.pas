@@ -13,7 +13,6 @@ Type
       FUF: string;
   public
     constructor Create;
-    procedure Salvar(const objetoCliente: TClientes);
 
     // propriedades da classe (semelhante aos getters and setters)
     property Codigo: integer read FCodigo write FCodigo;
@@ -30,11 +29,6 @@ uses
 { TClientes }
 
 constructor TClientes.Create;
-begin
-
-end;
-
-procedure TClientes.Salvar(const objetoCliente: TClientes);
 begin
 
 end;

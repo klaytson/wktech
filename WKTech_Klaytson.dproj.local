@@ -25,8 +25,8 @@
     <Transaction>2022/04/14 00:39:11.332,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 00:40:03.539,C:\Projetos\wktech\entities\ClassePedidos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 00:57:45.009,=C:\Projetos\wktech\Unit1.pas</Transaction>
-    <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
     <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
     <Transaction>2022/04/14 09:16:16.423,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 09:16:57.714,C:\Projetos\wktech\views\uFrmSelecaoCliente.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 09:16:57.714,C:\Projetos\wktech\views\uFrmSelecaoCliente.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
@@ -37,12 +37,23 @@
     <Transaction>2022/04/14 11:06:00.651,C:\Projetos\wktech\dao\ClasseDAO.pas=C:\Projetos\wktech\dao\ClassDAO.pas</Transaction>
     <Transaction>2022/04/14 11:15:51.345,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 11:17:33.852,C:\Projetos\wktech\controllers\ControllerDAO.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 15:29:56.488,=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 15:30:54.288,C:\Projetos\wktech\entities\ClassePedidosProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 15:59:33.598,=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 16:03:04.373,C:\Projetos\wktech\views\uFrmSelecaoProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 16:03:04.373,C:\Projetos\wktech\views\uFrmSelecaoProdutos.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
+    <Transaction>2022/04/14 16:08:03.582,=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 16:08:32.513,C:\Projetos\wktech\controllers\ControllerPedidosProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 16:34:03.721,=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 16:34:41.613,C:\Projetos\wktech\controllers\ControllerProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="controllers"/>
     <File Path="controllers\ControllerClientes.pas"/>
     <File Path="controllers\ControllerPedidos.pas"/>
     <File Path="controllers\ControllerDAO.pas"/>
+    <File Path="controllers\ControllerPedidosProdutos.pas"/>
+    <File Path="controllers\ControllerProdutos.pas"/>
     <File Path="dao"/>
     <File Path="dao\ClasseDAO.pas"/>
     <File Path="dao\ClasseDAOClientes.pas"/>
@@ -54,10 +65,13 @@
     <File Path="entities\ClasseClientes.pas"/>
     <File Path="entities\ClassePedidos.pas"/>
     <File Path="entities\ClasseProdutos.pas"/>
+    <File Path="entities\ClassePedidosProdutos.pas"/>
     <File Path="views"/>
     <File Path="views\uFrmMain.pas"/>
     <File Path="views\uFrmMain.dfm"/>
     <File Path="views\uFrmSelecaoCliente.pas"/>
     <File Path="views\uFrmSelecaoCliente.dfm"/>
+    <File Path="views\uFrmSelecaoProdutos.pas"/>
+    <File Path="views\uFrmSelecaoProdutos.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

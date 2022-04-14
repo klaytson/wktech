@@ -14,7 +14,6 @@ Type
 
   public
     constructor Create;
-    procedure Salvar(const objetoPedido: TPedidos);
 
     property NumeroPedido: Integer read FNumeroPedido write FNumeroPedido;
     property DataEmissao: TDate read FDataEmissao write FDataEmissao;
@@ -34,9 +33,6 @@ begin
 
 end;
 
-procedure TPedidos.Salvar(const objetoPedido: TPedidos);
-begin
 
-end;
 
 end.

@@ -1,5 +1,0 @@
-object DMPrincipal: TDMPrincipal
-  OldCreateOrder = False
-  Height = 264
-  Width = 340
-end
