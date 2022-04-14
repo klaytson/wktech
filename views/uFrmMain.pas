@@ -24,7 +24,7 @@ type
     GroupBox2: TGroupBox;
     BtnSelecao: TButton;
     Panel1: TPanel;
-    DBGrid1: TDBGrid;
+    GridProdutos: TDBGrid;
     Panel2: TPanel;
     Label6: TLabel;
     Edit1: TEdit;
@@ -39,9 +39,16 @@ type
     Label11: TLabel;
     Edit6: TEdit;
     BtnConfirmar: TButton;
+    BtnGravarPedido: TButton;
+    BtnVisualizarPedido: TButton;
+    BtnCancelarPedido: TButton;
     procedure btnNovoPedidoClick(Sender: TObject);
     procedure BtnSelecaoClick(Sender: TObject);
     procedure BtnConfirmarClick(Sender: TObject);
+    procedure BtnCancelarPedidoClick(Sender: TObject);
+    procedure GridProdutosKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure BtnGravarPedidoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,7 +64,16 @@ implementation
 {$R *.dfm}
 
 uses ClasseProdutos, uFrmSelecaoCliente, uFrmSelecaoProdutos,
-ControllerPedidosProdutos, ClassePedidosProdutos;
+ControllerPedidosProdutos, ClassePedidosProdutos, ControllerPedidos;
+
+procedure TFrmMain.BtnCancelarPedidoClick(Sender: TObject);
+var
+  ControllerPedido: TControllerPedidos;
+  NumeroPedido: String;
+begin
+  NumeroPedido := InputBox('INFORME O NÚMERO DO PEDIDO', 'INFORME O NÚMERO DO PEDIDO', '');
+  ControllerPedido.Excluir(StrToInt(NumeroPedido));
+end;
 
 procedure TFrmMain.BtnConfirmarClick(Sender: TObject);
 Var
@@ -77,7 +93,16 @@ begin
   ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
   ControllerPedidosProdutos.Inserir(PedidosProdutos);
 
+  ControllerPedidosProdutos.abrir(PedidosProdutos.NumeroPedido);
   Panel2.Visible := False;
+end;
+
+procedure TFrmMain.BtnGravarPedidoClick(Sender: TObject);
+var
+  ObjDAO: TControllerDAO;
+begin
+  ObjDAO := TControllerDAO.Create();
+  ObjDAO.Commit(DMPrincipal.FDConnection);
 end;
 
 procedure TFrmMain.btnNovoPedidoClick(Sender: TObject);
@@ -96,6 +121,22 @@ begin
   FrmSelecaoProdutos := TFrmSelecaoProdutos.create(Application);
   FrmSelecaoProdutos.ShowModal;
   FrmSelecaoProdutos.Free;
+end;
+
+procedure TFrmMain.GridProdutosKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  ControllerPedido: TControllerPedidos;
+begin
+  ControllerPedido := TControllerPedidos.Create();
+
+  If Key = VK_DELETE then
+    begin
+       if MessageDlg('Deseja realmente apagar este produto do seu pedido?', mtConfirmation, [mbYes,mbNo],0) = mrYes then
+       begin
+           ControllerPedido.ExcluirItemProduto(GridProdutos.Columns[2].Field.Value);
+       end;
+    end;
 end;
 
 end.

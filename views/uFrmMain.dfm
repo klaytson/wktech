@@ -3,8 +3,8 @@ object FrmMain: TFrmMain
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'FrmMain'
-  ClientHeight = 637
+  Caption = 'WKTech - Teste Klaytson Pereira'
+  ClientHeight = 573
   ClientWidth = 640
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -73,9 +73,8 @@ object FrmMain: TFrmMain
     object LblNumeroPedido: TLabel
       Left = 81
       Top = 17
-      Width = 82
+      Width = 3
       Height = 13
-      Caption = 'LblNumeroPedido'
     end
     object Label3: TLabel
       Left = 21
@@ -139,18 +138,20 @@ object FrmMain: TFrmMain
       Height = 1
       TabOrder = 1
     end
-    object DBGrid1: TDBGrid
+    object GridProdutos: TDBGrid
       Left = 3
-      Top = 203
+      Top = 206
       Width = 614
       Height = 189
       DataSource = DMPrincipal.DtsPedidosProdutos
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnKeyDown = GridProdutosKeyDown
     end
     object Panel2: TPanel
       Left = 20
@@ -261,5 +262,31 @@ object FrmMain: TFrmMain
         OnClick = BtnConfirmarClick
       end
     end
+  end
+  object BtnGravarPedido: TButton
+    Left = 505
+    Top = 543
+    Width = 120
+    Height = 25
+    Caption = 'Gravar Pedido'
+    TabOrder = 3
+    OnClick = BtnGravarPedidoClick
+  end
+  object BtnVisualizarPedido: TButton
+    Left = 89
+    Top = 8
+    Width = 97
+    Height = 25
+    Caption = 'Visualizar Pedido'
+    TabOrder = 4
+  end
+  object BtnCancelarPedido: TButton
+    Left = 192
+    Top = 8
+    Width = 89
+    Height = 25
+    Caption = 'Cancelar Pedido'
+    TabOrder = 5
+    OnClick = BtnCancelarPedidoClick
   end
 end

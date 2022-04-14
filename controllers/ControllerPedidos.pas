@@ -9,12 +9,33 @@ Type
     public
       procedure Salvar(const ObjetoPedido: TPedidos);
       procedure Inserir(const ObjetoPedido: TPedidos);
+      procedure Excluir(NumeroPedido: Integer);
+      procedure ExcluirItemProduto(CodigoProduto: Integer);
       Function ObterNumeroPedido(): Integer;
   end;
 
 implementation
 
 { TControllerPedidos }
+
+procedure TControllerPedidos.Excluir(NumeroPedido: Integer);
+var
+  ObjDAOPedidos: TDAOPedidos;
+begin
+  ObjDAOPedidos := TDAOPedidos.create();
+
+  ObjDAOPedidos.Excluir(NumeroPedido);
+end;
+
+procedure TControllerPedidos.ExcluirItemProduto(CodigoProduto: Integer);
+var
+  ObjDAOPedidos: TDAOPedidos;
+begin
+  ObjDAOPedidos := TDAOPedidos.create();
+
+  ObjDAOPedidos.ExcluirItemProduto(CodigoProduto);
+
+end;
 
 procedure TControllerPedidos.Inserir(const ObjetoPedido: TPedidos);
 var

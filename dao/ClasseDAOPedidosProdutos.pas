@@ -11,11 +11,22 @@ Type
       procedure Inserir(PedidosProdutos: TPedidosProdutos);
       procedure Salvar(PedidosProdutos: TPedidosProdutos);
       Function ObterNumeroPedido(): Integer;
+      procedure Abrir(NumeroPedido: Integer);
   end;
 
 implementation
 
 { DAOClientes }
+
+procedure TDAOPedidosProdutos.Abrir(NumeroPedido: Integer);
+begin
+    With DmPrincipal.QryPedidosProdutos Do
+    begin
+      Close;
+      Params[0].Value := NumeroPedido;
+      Open;
+    end;
+end;
 
 procedure TDAOPedidosProdutos.Inserir(pedidosProdutos: TPedidosProdutos);
 Var

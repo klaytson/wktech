@@ -74,11 +74,21 @@ object DMPrincipal: TDMPrincipal
     Top = 148
   end
   object QryPedidosProdutos: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT * FROM PEDIDOS_PRODUTOS')
+      'SELECT * FROM PEDIDOS_PRODUTOS'
+      'WHERE NUMEROPEDIDO =?')
     Left = 512
     Top = 92
+    ParamData = <
+      item
+        Position = 1
+        DataType = ftInteger
+        FDDataType = dtInt32
+        ParamType = ptInput
+        Value = Null
+      end>
     object QryPedidosProdutosCodigoPedidosProdutos: TFDAutoIncField
       FieldName = 'CodigoPedidosProdutos'
       Origin = 'CodigoPedidosProdutos'
@@ -121,7 +131,6 @@ object DMPrincipal: TDMPrincipal
     end
   end
   object DtsPedidosProdutos: TDataSource
-    AutoEdit = False
     DataSet = QryPedidosProdutos
     Left = 508
     Top = 156
