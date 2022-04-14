@@ -1,0 +1,12 @@
+unit DAOClientes;
+
+interface
+
+Type
+  DAOClientes = class
+
+  end;
+
+implementation
+
+end.

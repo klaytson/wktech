@@ -1,0 +1,40 @@
+unit ClassePedidos;
+
+interface
+
+uses Dialogs;
+
+Type
+  TPedidos = Class
+    private
+      FDataEmissao: TDate;
+      FCodigoCliente: Integer;
+      FPrecoVenda: string;
+
+  public
+    constructor Create;
+    procedure Salvar(const objetoPedidos: TPedidos);
+
+    property Codigo: integer read FCodigo write FCodigo;
+    property Descricao: string read FDescricao write FDescricao;
+    property PrecoVenda: string read FPrecoVenda write FPrecoVenda;
+  end;
+
+implementation
+
+uses
+  SysUtils;
+
+{ TPedidos }
+
+constructor TPedidos.Create;
+begin
+
+end;
+
+procedure TPedidos.Salvar(const objetoPedidos: TPedidos);
+begin
+
+end;
+
+end.

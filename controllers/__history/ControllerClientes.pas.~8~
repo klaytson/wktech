@@ -1,0 +1,43 @@
+unit ControllerClientes;
+
+interface
+
+Uses ClasseClientes, ClasseDAOClientes;
+
+Type
+  TControllerClientes = class
+    public
+      procedure Salvar(const ObjetoCliente: TClientes);
+      procedure Inserir(const ObjetoCliente: TClientes);
+  end;
+
+implementation
+
+{ TControllerClientes }
+
+procedure TControllerClientes.Inserir(const ObjetoCliente: TClientes);
+var
+  ObjDAOCliente: TDAOClientes;
+  ObjCliente: TClientes;
+begin
+  ObjDAOCliente := TDAOClientes.create();
+  ObjCliente := TClientes.Create();
+
+  ObjDAOCliente.Inserir(ObjCliente);
+
+end;
+
+procedure TControllerClientes.Salvar(const ObjetoCliente: TClientes);
+var
+  ObjDAOCliente: TDAOClientes;
+  ObjCliente: TClientes;
+begin
+  ObjDAOCliente := TDAOClientes.create();
+  ObjCliente := TClientes.Create();
+
+  ObjCliente := ObjetoCliente;
+  ObjDAOCliente.Salvar(ObjCliente);
+
+end;
+
+end.

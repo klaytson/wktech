@@ -1,0 +1,19 @@
+program WKTech_Klaytson;
+
+uses
+  Vcl.Forms,
+  uFrmMain in 'views\uFrmMain.pas' {FrmMain},
+  ClasseClientes in 'entities\ClasseClientes.pas',
+  ClasseProdutos in 'entities\ClasseProdutos.pas',
+  ClasseDAOClientes in 'dao\ClasseDAOClientes.pas',
+  ClasseDAOProdutos in 'dao\ClasseDAOProdutos.pas',
+  ControllerClientes in 'controllers\ControllerClientes.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmMain, FrmMain);
+  Application.Run;
+end.

@@ -1,0 +1,61 @@
+unit ClasseDAOClientes;
+
+interface
+
+Uses ClasseClientes;
+
+Type
+  TDAOClientes = class
+
+    public
+      procedure Salvar(Cliente: TClientes);
+      procedure Inserir(Cliente: TClientes);
+      function Consultar(nomeCliente: String): TClientes;
+  end;
+
+implementation
+
+Uses uDmPrincipal;
+
+{ DAOClientes }
+
+function TDAOClientes.Consultar(nomeCliente: String): TClientes;
+var
+  Cliente: TClientes;
+begin
+  Clientes := TClientes.Create();
+
+  With DmPrincipal.QryClientes Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT CODIGO, NOME, CIDADE, UF FROM CLIENTES ' +
+        'WHERE NOME LIKE :NOME');
+
+      ParamByName('NOME').AsString := '%' + nomeCliente + '%';
+      Open;
+
+        With cliente Do
+        begin
+          Codigo := FieldByName('CODIGO').AsInteger;
+          Nome := FieldByName('NOME').AsString;
+          Cidade := FieldByName('CIDADE').AsString;
+          UF := FieldByName('UF').AsString;
+        end;
+    end;
+
+    Result := cliente;
+
+end;
+
+procedure TDAOClientes.Inserir(Cliente: TClientes);
+begin
+
+end;
+
+procedure TDAOClientes.Salvar(Cliente: TClientes);
+begin
+
+end;
+
+end.
