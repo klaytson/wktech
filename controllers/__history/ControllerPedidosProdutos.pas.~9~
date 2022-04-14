@@ -2,7 +2,7 @@ unit ControllerPedidosProdutos;
 
 interface
 
-Uses ClassePedidosProdutos, ClasseDAOPedidosProdutos, Sysutils;
+Uses ClassePedidosProdutos, ClasseDAOPedidos, Sysutils;
 
 Type
   TControllerPedidosProdutos = class
@@ -17,9 +17,9 @@ implementation
 
 procedure TControllerPedidosProdutos.Inserir(const ObjetoPedidoProduto: TPedidosProdutos);
 var
-  ObjDAOPedidosProdutos: TDAOPedidosProdutos;
+  ObjDAOPedidosProdutos: TDAOPedidos;
 begin
-  ObjDAOPedidosProdutos := TDAOPedidosProdutos.create();
+  ObjDAOPedidosProdutos := TObjDAOPedidosProdutos.create();
 
   ObjDAOPedidosProdutos.Inserir(ObjetoPedidoProduto);
 end;

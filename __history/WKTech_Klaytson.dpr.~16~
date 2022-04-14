@@ -18,8 +18,7 @@ uses
   ClassePedidosProdutos in 'entities\ClassePedidosProdutos.pas',
   uFrmSelecaoProdutos in 'views\uFrmSelecaoProdutos.pas' {FrmSelecaoProdutos},
   ControllerPedidosProdutos in 'controllers\ControllerPedidosProdutos.pas',
-  ControllerProdutos in 'controllers\ControllerProdutos.pas',
-  ClasseDAOPedidosProdutos in 'dao\ClasseDAOPedidosProdutos.pas';
+  ControllerProdutos in 'controllers\ControllerProdutos.pas';
 
 {$R *.res}
 

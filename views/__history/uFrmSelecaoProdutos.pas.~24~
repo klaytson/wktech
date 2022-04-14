@@ -29,19 +29,26 @@ var
 
 implementation
 
-Uses uFrmMain, ControllerProdutos;
+Uses uFrmMain;
 
 {$R *.dfm}
 
 
 procedure TFrmSelecaoProdutos.BtnSelecionarClick(Sender: TObject);
+Var
+  Produto: TProdutos;
+
 begin
   FrmMain.Panel2.Visible := True;
 
   Produto := TProdutos.Create();
   Produto.Codigo := GridProdutos.Columns[0].Field.Value;
   Produto.Descricao := GridProdutos.Columns[1].Field.Value;
-  Produto.PrecoVenda := GridProdutos.Columns[2].Field.Value;
+  Produto.PrecoVenda := GridProdutos.Columns[2].Field.Value;;
+
+
+  Close;
+
 
   Close;
 end;

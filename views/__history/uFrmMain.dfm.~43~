@@ -144,7 +144,6 @@ object FrmMain: TFrmMain
       Top = 203
       Width = 614
       Height = 189
-      DataSource = DMPrincipal.DtsPedidosProdutos
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -234,7 +233,7 @@ object FrmMain: TFrmMain
         Width = 89
         Height = 21
         TabOrder = 3
-        Text = '1'
+        Text = 'Edit4'
       end
       object Edit5: TEdit
         Left = 110
@@ -250,6 +249,7 @@ object FrmMain: TFrmMain
         Width = 89
         Height = 21
         TabOrder = 5
+        Text = 'Edit4'
       end
       object BtnConfirmar: TButton
         Left = 8

@@ -2,7 +2,7 @@ unit ControllerPedidosProdutos;
 
 interface
 
-Uses ClassePedidosProdutos, ClasseDAOPedidosProdutos, Sysutils;
+Uses ClassePedidosProdutos, ClasseDAOPedidos, Sysutils;
 
 Type
   TControllerPedidosProdutos = class

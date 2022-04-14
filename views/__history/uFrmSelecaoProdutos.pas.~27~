@@ -35,6 +35,9 @@ Uses uFrmMain, ControllerProdutos;
 
 
 procedure TFrmSelecaoProdutos.BtnSelecionarClick(Sender: TObject);
+Var
+  Produto: TProdutos;
+
 begin
   FrmMain.Panel2.Visible := True;
 

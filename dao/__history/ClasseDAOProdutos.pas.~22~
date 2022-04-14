@@ -8,6 +8,8 @@ Type
   TDAOProdutos = class
 
     public
+      procedure Salvar(Produto: TProdutos);
+      procedure Inserir(Produto: TProdutos);
       function Consultar(Produto: String): TProdutos;
   end;
 
@@ -42,6 +44,16 @@ begin
     end;
 
     Result := ObjProduto;
+
+end;
+
+procedure TDAOProdutos.Inserir(Produto: TProdutos);
+begin
+
+end;
+
+procedure TDAOProdutos.Salvar(Produto: TProdutos);
+begin
 
 end;
 

@@ -25,13 +25,6 @@ type
     DtsProdutos: TDataSource;
     QryPedidosProdutos: TFDQuery;
     DtsPedidosProdutos: TDataSource;
-    QryPedidosProdutosCodigoPedidosProdutos: TFDAutoIncField;
-    QryPedidosProdutosNumeroPedido: TIntegerField;
-    QryPedidosProdutosCodigoProduto: TIntegerField;
-    QryPedidosProdutosQuantidade: TIntegerField;
-    QryPedidosProdutosValorUnitario: TFloatField;
-    QryPedidosProdutosValorTotal: TFloatField;
-    QryPedidosProdutosNomeProduto: TStringField;
   private
     { Private declarations }
   public

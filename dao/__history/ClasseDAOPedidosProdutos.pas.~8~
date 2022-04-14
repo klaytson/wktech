@@ -1,0 +1,62 @@
+unit ClasseDAOPedidosProdutos;
+
+interface
+
+Uses ClassePedidosProdutos, UDMPrincipal, System.SysUtils;
+
+Type
+  TDAOPedidosProdutos = class
+
+    public
+      procedure Inserir(PedidosProdutos: TPedidosProdutos);
+      procedure Salvar(PedidosProdutos: TPedidosProdutos);
+      Function ObterNumeroPedido(): Integer;
+  end;
+
+implementation
+
+{ DAOClientes }
+
+procedure TDAOPedidosProdutos.Inserir(pedidosProdutos: TPedidosProdutos);
+Var
+  PedidosProdutos: TPedidosProdutos;
+  codigopedido: integer;
+begin
+  PedidosProdutos := TPedidosProdutos.Create();
+  PedidosProdutos := pedidosProdutos;
+
+  With DmPrincipal.QryAux Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('INSERT INTO `wktech`.`pedidos_produtos` (`NUMEROPEDIDO`, `CODIGOPRODUTO`, `QUANTIDADE`, `VALORUNITARIO`, `VALORTOTAL`) ' +
+      ' VALUES (:pedido, :cod, :quantidade, :unitario, :total)');
+
+      ParamByName('pedido').Value := PedidosProdutos.NumeroPedido;
+      ParamByName('cod').AsInteger := PedidosProdutos.CodigoCliente;
+      ParamByName('quantidade').Value := PedidosProdutos.ValorTotal;
+      ParamByName('unitario').AsInteger := PedidosProdutos.CodigoCliente;
+      ParamByName('total').Value := PedidosProdutos.ValorTotal;
+      ExecSQL;
+    end;
+end;
+
+function TDAOPedidosProdutos.ObterNumeroPedido: Integer;
+begin
+  With DmPrincipal.QryAux Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT NUMEROPEDIDO FROM wktech.pedidos_dados_gerais ORDER BY NUMEROPEDIDO DESC LIMIT 1');
+      Open;
+
+      Result := FieldByName('NUMEROPEDIDO').AsInteger;
+    end;
+end;
+
+procedure TDAOPedidosProdutos.Salvar(pedidos: TPedidos);
+begin
+
+end;
+
+end.

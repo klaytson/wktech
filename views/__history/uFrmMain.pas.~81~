@@ -63,7 +63,6 @@ procedure TFrmMain.BtnConfirmarClick(Sender: TObject);
 Var
   PedidosProdutos: TPedidosProdutos;
   ControllerPedidosProdutos: TControllerPedidosProdutos;
-
 begin
   PedidosProdutos := TPedidosProdutos.Create();
 
@@ -72,7 +71,10 @@ begin
   PedidosProdutos.Quantidade := StrToInt(Edit4.Text);
   PedidosProdutos.ValorUnitario := StrToFloat(Edit5.Text);
 
-  PedidosProdutos.ValorTotal := PedidosProdutos.Quantidade * PedidosProdutos.ValorUnitario;
+  If(Edit6.Text = '')Then
+    PedidosProdutos.ValorTotal := 0.0
+  Else
+    PedidosProdutos.ValorTotal := StrToFloat(Edit6.Text);
 
   ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
   ControllerPedidosProdutos.Inserir(PedidosProdutos);

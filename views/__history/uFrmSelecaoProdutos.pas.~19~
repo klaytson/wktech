@@ -13,7 +13,7 @@ type
     EdtNomeProduto: TEdit;
     BtnSelecionar: TButton;
     Button1: TButton;
-    GridProdutos: TDBGrid;
+    DBGrid1: TDBGrid;
     procedure BtnSelecionarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -35,13 +35,25 @@ Uses uFrmMain, ControllerProdutos;
 
 
 procedure TFrmSelecaoProdutos.BtnSelecionarClick(Sender: TObject);
+Var
+  //ObjPedido: TPedidos;
+  ObjControllerPedido: TControllerPedidos;
 begin
   FrmMain.Panel2.Visible := True;
 
-  Produto := TProdutos.Create();
-  Produto.Codigo := GridProdutos.Columns[0].Field.Value;
-  Produto.Descricao := GridProdutos.Columns[1].Field.Value;
-  Produto.PrecoVenda := GridProdutos.Columns[2].Field.Value;
+  ObjPedido := TPedidos.Create();
+  ObjPedido.CodigoCliente := GridClientes.Columns[0].Field.Value;
+  ObjPedido.DataEmissao := Date();
+  ObjPedido.ValorTotal := 0.0;
+
+  objCliente.Nome := GridClientes.Columns[1].Field.Value;
+  objCliente.Codigo := GridClientes.Columns[0].Field.Value;
+
+  ObjControllerPedido := TControllerPedidos.Create();
+  ObjControllerPedido.Inserir(ObjPedido);
+
+  Close;
+
 
   Close;
 end;
@@ -53,7 +65,7 @@ begin
   Produto := TProdutos.Create();
 
   ControllerProduto := TControllerProdutos.create();
-  ControllerProduto.Consultar(EdtNomeProduto.Text);
+  Produto := ControllerProduto.Consultar(EdtNomeProduto.Text);
 end;
 
 procedure TFrmSelecaoProdutos.FormClose(Sender: TObject;

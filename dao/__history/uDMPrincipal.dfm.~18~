@@ -74,6 +74,7 @@ object DMPrincipal: TDMPrincipal
     Top = 148
   end
   object QryPedidosProdutos: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT * FROM PEDIDOS_PRODUTOS')

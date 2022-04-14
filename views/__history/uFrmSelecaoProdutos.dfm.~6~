@@ -14,7 +14,6 @@ object FrmSelecaoProdutos: TFrmSelecaoProdutos
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -49,7 +48,7 @@ object FrmSelecaoProdutos: TFrmSelecaoProdutos
     TabOrder = 2
     OnClick = Button1Click
   end
-  object GridProdutos: TDBGrid
+  object DBGrid1: TDBGrid
     Left = 8
     Top = 51
     Width = 568

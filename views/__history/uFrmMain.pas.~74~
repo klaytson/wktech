@@ -63,19 +63,13 @@ procedure TFrmMain.BtnConfirmarClick(Sender: TObject);
 Var
   PedidosProdutos: TPedidosProdutos;
   ControllerPedidosProdutos: TControllerPedidosProdutos;
-
 begin
   PedidosProdutos := TPedidosProdutos.Create();
-
   PedidosProdutos.NumeroPedido := StrToInt(Edit1.Text);
   PedidosProdutos.CodigoProduto := StrToInt(Edit2.Text);
-  PedidosProdutos.Quantidade := StrToInt(Edit4.Text);
-  PedidosProdutos.ValorUnitario := StrToFloat(Edit5.Text);
-
-  PedidosProdutos.ValorTotal := PedidosProdutos.Quantidade * PedidosProdutos.ValorUnitario;
 
   ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
-  ControllerPedidosProdutos.Inserir(PedidosProdutos);
+  TControllerPedidosProdutos.Inserir();
 
   Panel2.Visible := False;
 end;
