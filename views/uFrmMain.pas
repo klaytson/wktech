@@ -81,7 +81,8 @@ procedure TFrmMain.BtnConfirmarClick(Sender: TObject);
 Var
   PedidosProdutos: TPedidosProdutos;
   ControllerPedidosProdutos: TControllerPedidosProdutos;
-
+  ControllerPedidos: TControllerPedidos;
+  ValorTotal: Double;
 begin
   PedidosProdutos := TPedidosProdutos.Create();
 
@@ -89,7 +90,6 @@ begin
   PedidosProdutos.CodigoProduto := StrToInt(Edit2.Text);
   PedidosProdutos.Quantidade := StrToInt(Edit4.Text);
   PedidosProdutos.ValorUnitario := StrToFloat(Edit5.Text);
-  PedidosProdutos.CodigoPedidosProdutos := GridProdutos.Columns[5].Field.Value;
 
   PedidosProdutos.ValorTotal := PedidosProdutos.Quantidade * PedidosProdutos.ValorUnitario;
 
@@ -100,12 +100,20 @@ begin
     end
   Else If(Tag = 1)Then
     begin
+      PedidosProdutos.CodigoPedidosProdutos := GridProdutos.Columns[5].Field.Value;
+
       ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
       ControllerPedidosProdutos.Atualizar(PedidosProdutos);
     end;
 
+    ValorTotal := ControllerPedidosProdutos.obterSomatorioPedido(PedidosProdutos.NumeroPedido);
+    ControllerPedidos.AtualizarTotalPedido(PedidosProdutos.NumeroPedido, ValorTotal);
+
+    EdtValorTotal.Text := FloatToStr(ValorTotal);
+
   ControllerPedidosProdutos.abrir(PedidosProdutos.NumeroPedido);
   Panel2.Visible := False;
+  edit4.Text := '1';
   Tag := 0;
 end;
 
@@ -171,14 +179,23 @@ procedure TFrmMain.GridProdutosKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
   ControllerPedido: TControllerPedidos;
+  ControllerPedidosProdutos: TControllerPedidosProdutos;
+  valorTotal: Double;
+  NumeroPedido: integer;
 begin
   ControllerPedido := TControllerPedidos.Create();
+  ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
+  NumeroPedido := StrToInt(EdtNumeroPedido.Text);
 
   If Key = VK_DELETE then
     begin
        if MessageDlg('Deseja realmente apagar este produto do seu pedido?', mtConfirmation, [mbYes,mbNo],0) = mrYes then
        begin
            ControllerPedido.ExcluirItemProduto(GridProdutos.Columns[5].Field.Value);
+
+           ValorTotal := ControllerPedidosProdutos.obterSomatorioPedido(NumeroPedido);
+           ControllerPedido.AtualizarTotalPedido(NumeroPedido, ValorTotal);
+           EdtValorTotal.Text := FloatToStr(ValorTotal);
        end;
     end;
 

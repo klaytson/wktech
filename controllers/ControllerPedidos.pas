@@ -7,16 +7,28 @@ Uses ClassePedidos, ClasseDAOPedidos, Sysutils;
 Type
   TControllerPedidos = class
     public
-      procedure Salvar(const ObjetoPedido: TPedidos);
       procedure Inserir(const ObjetoPedido: TPedidos);
       procedure Excluir(NumeroPedido: Integer);
       procedure ExcluirItemProduto(CodigoPedidoProduto: Integer);
+
+      procedure AtualizarTotalPedido(NumeroPedido: Integer; ValorTotal: Double);
+
       Function ObterNumeroPedido(): Integer;
   end;
 
 implementation
 
 { TControllerPedidos }
+
+procedure TControllerPedidos.AtualizarTotalPedido(NumeroPedido: Integer; ValorTotal: Double);
+var
+  ObjDAOPedidos: TDAOPedidos;
+begin
+  ObjDAOPedidos := TDAOPedidos.create();
+
+  ObjDAOPedidos.AtualizarTotalPedido(NumeroPedido, ValorTotal);
+
+end;
 
 procedure TControllerPedidos.Excluir(NumeroPedido: Integer);
 var
@@ -54,18 +66,6 @@ begin
   Result := ObjDAOPedido.ObterNumeroPedido();
 end;
 
-procedure TControllerPedidos.Salvar(const ObjetoPedido: TPedidos);
-var
-  ObjDAOPedido: TDAOPedidos;
-begin
-  Try
-    ObjDAOPedido := TDAOPedidos.create();
 
-    ObjDAOPedido.Salvar(ObjetoPedido);
-  Finally
-    FreeAndNil(ObjDAOPedido);
-  End;
-
-end;
 
 end.

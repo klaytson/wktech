@@ -12,6 +12,7 @@ Type
       procedure Atualizar(PedidosProdutos: TPedidosProdutos);
       procedure Salvar(PedidosProdutos: TPedidosProdutos);
       Function ObterNumeroPedido(): Integer;
+      function obterSomatorioPedido(NumeroPedido: Integer): Double;
       function Abrir(NumeroPedido: Integer): TMain;
   end;
 
@@ -72,7 +73,6 @@ end;
 procedure TDAOPedidosProdutos.Inserir(pedidosProdutos: TPedidosProdutos);
 Var
   objPedidosProdutos: TPedidosProdutos;
-  codigopedido: integer;
 begin
   objPedidosProdutos := TPedidosProdutos.Create();
   objPedidosProdutos := pedidosProdutos;
@@ -103,6 +103,21 @@ begin
       Open;
 
       Result := FieldByName('NUMEROPEDIDO').AsInteger;
+    end;
+end;
+
+function TDAOPedidosProdutos.obterSomatorioPedido(
+  NumeroPedido: Integer): Double;
+begin
+    With DmPrincipal.QryAux Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('select sum(valortotal)as totalpedido from pedidos_produtos where numeropedido =:NumeroPedido');
+      ParamByname('NumeroPedido').AsInteger := NumeroPedido;
+      Open;
+
+      Result := FieldByName('totalpedido').AsExtended;
     end;
 end;
 

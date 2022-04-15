@@ -2,7 +2,7 @@ unit ClasseDAOProdutos;
 
 interface
 
-Uses ClasseProdutos;
+Uses ClasseProdutos, DB, Dialogs;
 
 Type
   TDAOProdutos = class
@@ -31,14 +31,20 @@ begin
         'WHERE DESCRICAO LIKE :DESC');
 
       ParamByName('DESC').AsString := '%' + Produto + '%';
-      Open;
 
-        With ObjProduto Do
-        begin
-          Codigo := FieldByName('CODIGO').AsInteger;
-          Descricao := FieldByName('DESCRICAO').AsString;
-          PrecoVenda := FieldByName('PRECOVENDA').AsString;
-        end;
+      Try
+        Open;
+
+          With ObjProduto Do
+          begin
+            Codigo := FieldByName('CODIGO').AsInteger;
+            Descricao := FieldByName('DESCRICAO').AsString;
+            PrecoVenda := FieldByName('PRECOVENDA').AsString;
+          end;
+      Except
+        On EDatabaseerror Do
+          MessageDlg('Não foi possível consultar produtos', MtWarning, [MbOk], 0);
+      End;
     end;
 
     Result := ObjProduto;

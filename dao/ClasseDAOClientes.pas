@@ -2,14 +2,12 @@ unit ClasseDAOClientes;
 
 interface
 
-Uses ClasseClientes;
+Uses ClasseClientes, DB, dialogs;
 
 Type
   TDAOClientes = class
 
     public
-      procedure Salvar(Cliente: TClientes);
-      procedure Inserir(Cliente: TClientes);
       function Consultar(nomeCliente: String): TClientes;
   end;
 
@@ -25,7 +23,7 @@ var
 begin
   Cliente := TClientes.Create();
 
-  With DmPrincipal.QryClientes Do
+    With DmPrincipal.QryClientes Do
     begin
       Close;
       SQL.Clear;
@@ -33,7 +31,9 @@ begin
         'WHERE NOME LIKE :NOME');
 
       ParamByName('NOME').AsString := '%' + nomeCliente + '%';
-      Open;
+
+      try
+        Open;
 
         With cliente Do
         begin
@@ -42,19 +42,12 @@ begin
           Cidade := FieldByName('CIDADE').AsString;
           UF := FieldByName('UF').AsString;
         end;
-    end;
 
-    Result := cliente;
-end;
-
-procedure TDAOClientes.Inserir(Cliente: TClientes);
-begin
-
-end;
-
-procedure TDAOClientes.Salvar(Cliente: TClientes);
-begin
-
+        Result := cliente;
+      Except on EdatabaseError Do
+        MessageDlg('Houve um erro na consulta.', MtWarning, [MbOk], 0);
+      end;
+  end;
 end;
 
 end.

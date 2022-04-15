@@ -5,3 +5,9 @@ INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Alfredo Souza'
 INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Amélia Cavalcanti', 'Santa Catarina', 'SC');
 INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Cristina Cardoso', 'Fortaleza', 'CE');
 INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Joaquim Cardoso', 'Fortaleza', 'CE');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Rafael Lima', 'Olinda', 'PE');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Alice Costa', 'Recife', 'PE');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Augusto Candido', 'Rio de Janeiro', 'RJ');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Renata Wagner', 'São Paulo', 'SP');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Alex Limoeiro', 'Santos', 'SP');
+INSERT INTO `wktech`.`clientes` (`Nome`, `Cidade`, `UF`) VALUES ('Henrique Spencer', 'Recife', 'PE');
