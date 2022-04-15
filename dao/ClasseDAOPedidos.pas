@@ -11,7 +11,7 @@ Type
       procedure Inserir(pedidos: TPedidos);
       procedure Salvar(pedidos: TPedidos);
       procedure Excluir(NumeroPedido: Integer);
-      procedure ExcluirItemProduto(CodigoProduto: Integer);
+      procedure ExcluirItemProduto(CodigoPedidoProduto: Integer);
       Function ObterNumeroPedido(): Integer;
   end;
 
@@ -36,14 +36,14 @@ begin
     end;
 end;
 
-procedure TDAOPedidos.ExcluirItemProduto(CodigoProduto: Integer);
+procedure TDAOPedidos.ExcluirItemProduto(CodigoPedidoProduto: Integer);
 begin
   With DmPrincipal.QryAux Do
     begin
       Close;
       SQL.Clear;
-      SQL.Add('DELETE FROM PEDIDOS_PRODUTOS WHERE CODIGOPRODUTO =:codigoproduto');
-      ParamByName('codigoproduto').Value := CodigoProduto;
+      SQL.Add('DELETE FROM PEDIDOS_PRODUTOS WHERE CODIGOPEDIDOSPRODUTOS =:codigopedidoproduto');
+      ParamByName('codigopedidoproduto').Value := CodigoPedidoProduto;
       ExecSQL;
     end;
 

@@ -2,26 +2,37 @@ unit ControllerPedidosProdutos;
 
 interface
 
-Uses ClassePedidosProdutos, ClasseDAOPedidosProdutos, Sysutils;
+Uses ClassePedidosProdutos, ClasseDAOPedidosProdutos, Sysutils, ClasseMain;
 
 Type
   TControllerPedidosProdutos = class
     public
       procedure Salvar(const ObjetoPedidoProduto: TPedidosProdutos);
       procedure Inserir(const ObjetoPedidoProduto: TPedidosProdutos);
-      procedure abrir(NumeroPedido: Integer);
+      procedure Atualizar(const ObjetoPedidoProduto: TPedidosProdutos);
+      function abrir(NumeroPedido: Integer): TMain;
   end;
 
 implementation
 
 { TControllerPedidos }
 
-procedure TControllerPedidosProdutos.abrir(NumeroPedido: Integer);
+function TControllerPedidosProdutos.abrir(NumeroPedido: Integer): TMain;
 var
   ObjDAOPedidosProdutos: TDAOPedidosProdutos;
 begin
   ObjDAOPedidosProdutos := TDAOPedidosProdutos.Create();
-  ObjDAOPedidosProdutos.Abrir(NumeroPedido);
+  Result := ObjDAOPedidosProdutos.Abrir(NumeroPedido);
+end;
+
+procedure TControllerPedidosProdutos.Atualizar(
+  const ObjetoPedidoProduto: TPedidosProdutos);
+var
+  ObjDAOPedidosProdutos: TDAOPedidosProdutos;
+begin
+  ObjDAOPedidosProdutos := TDAOPedidosProdutos.create();
+
+  ObjDAOPedidosProdutos.Atualizar(ObjetoPedidoProduto);
 end;
 
 procedure TControllerPedidosProdutos.Inserir(const ObjetoPedidoProduto: TPedidosProdutos);

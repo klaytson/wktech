@@ -62,7 +62,7 @@ begin
   FrmMain.Edit2.Text := IntToStr(Produto.Codigo);
   FrmMain.Edit3.Text := Produto.Descricao;
   FrmMain.Edit5.Text := Produto.PrecoVenda;
-  FrmMain.Edit1.Text := FrmMain.LblNumeroPedido.Caption;
+  FrmMain.Edit1.Text := FrmMain.EdtNumeroPedido.Text;
   FrmMain.Edit6.Text := Produto.PrecoVenda;
 end;
 

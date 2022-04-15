@@ -129,6 +129,7 @@
         <DCCReference Include="controllers\ControllerPedidosProdutos.pas"/>
         <DCCReference Include="controllers\ControllerProdutos.pas"/>
         <DCCReference Include="dao\ClasseDAOPedidosProdutos.pas"/>
+        <DCCReference Include="entities\ClasseMain.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

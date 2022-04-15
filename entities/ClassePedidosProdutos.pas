@@ -7,6 +7,7 @@ uses Dialogs;
 Type
   TPedidosProdutos = Class
     private
+      FCodigoPedidosProdutos: Integer;
       FNumeroPedido: Integer;
       FCodigoProduto: Integer;
       FQuantidade: Integer;
@@ -15,6 +16,7 @@ Type
   public
     constructor Create;
 
+    property CodigoPedidosProdutos: Integer read FCodigoPedidosProdutos write FCodigoPedidosProdutos;
     property NumeroPedido: Integer read FNumeroPedido write FNumeroPedido;
     property CodigoProduto: Integer read FCodigoProduto write FCodigoProduto;
     property Quantidade: Integer read FQuantidade write FQuantidade;

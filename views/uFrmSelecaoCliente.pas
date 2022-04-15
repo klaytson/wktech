@@ -69,10 +69,10 @@ procedure TFrmSelecaoCliente.FormClose(Sender: TObject;
 Var
   ControllerPedido: TControllerPedidos;
 begin
-  FrmMain.LblCodigo.Caption := IntToStr(ObjCliente.Codigo);
-  FrmMain.LblNomeCliente.Caption := objCliente.Nome;
+  FrmMain.EdtCodigoCliente.Text := IntToStr(ObjCliente.Codigo);
+  FrmMain.EdtNomeCliente.Text := objCliente.Nome;
   FrmMain.EdtDataEmissao.Text := DateTimeToStr(Date());
-  FrmMain.LblNumeroPedido.Caption := IntToStr(ControllerPedido.ObterNumeroPedido());
+  FrmMain.EdtNumeroPedido.Text := IntToStr(ControllerPedido.ObterNumeroPedido());
   FrmMain.BtnSelecao.Visible := True;
 end;
 

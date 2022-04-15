@@ -2,30 +2,71 @@ unit ClasseDAOPedidosProdutos;
 
 interface
 
-Uses ClassePedidosProdutos, UDMPrincipal, System.SysUtils;
+Uses ClassePedidosProdutos, UDMPrincipal, System.SysUtils, ClasseMain;
 
 Type
   TDAOPedidosProdutos = class
 
     public
       procedure Inserir(PedidosProdutos: TPedidosProdutos);
+      procedure Atualizar(PedidosProdutos: TPedidosProdutos);
       procedure Salvar(PedidosProdutos: TPedidosProdutos);
       Function ObterNumeroPedido(): Integer;
-      procedure Abrir(NumeroPedido: Integer);
+      function Abrir(NumeroPedido: Integer): TMain;
   end;
 
 implementation
 
-{ DAOClientes }
+{ TDAOPedidosProdutos }
 
-procedure TDAOPedidosProdutos.Abrir(NumeroPedido: Integer);
+function TDAOPedidosProdutos.Abrir(NumeroPedido: Integer): TMain;
+var
+  ObjMain: TMain;
 begin
+  ObjMain := TMain.Create();
+
     With DmPrincipal.QryPedidosProdutos Do
     begin
       Close;
       Params[0].Value := NumeroPedido;
       Open;
+
+      ObjMain.NumeroPedido := FieldByName('NumeroPedido').asInteger;
+      ObjMain.DataEmissao := FieldByName('DataEmissao').AsDateTime;
+      ObjMain.CodigoCliente := FieldByName('CodigoCliente').AsInteger;
+      ObjMain.Nome := FieldByName('Nome').AsString;
+      ObjMain.Descricao := FieldByName('Descricao').AsString;
+      ObjMain.Quantidade := FieldByName('Quantidade').AsInteger;
+      ObjMain.ValorUnitario := FieldByName('ValorUnitario').AsExtended;
+      ObjMain.ValorTotal := FieldByName('ValorTotal').AsExtended;
+
+      Result := ObjMain;
     end;
+end;
+
+procedure TDAOPedidosProdutos.Atualizar(PedidosProdutos: TPedidosProdutos);
+Var
+  objPedidosProdutos: TPedidosProdutos;
+  codigopedido: integer;
+begin
+  objPedidosProdutos := TPedidosProdutos.Create();
+  objPedidosProdutos := pedidosProdutos;
+
+  With DmPrincipal.QryAux Do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('UPDATE `wktech`.`pedidos_produtos` SET `Quantidade` =:Quantidade, ' +
+      ' `ValorUnitario` =:ValorUnitario, `ValorTotal` =:ValorTotal WHERE (`CodigoPedidosProdutos` =:CodigoPedidosProdutos)');
+
+      ParamByName('Quantidade').Value := objPedidosProdutos.Quantidade;
+      ParamByName('ValorUnitario').AsFloat := objPedidosProdutos.ValorUnitario;
+      ParamByName('ValorTotal').Value := objPedidosProdutos.ValorTotal;
+      ParamByName('CodigoPedidosProdutos').value := objPedidosProdutos.CodigoPedidosProdutos;
+
+      ExecSQL;
+    end;
+
 end;
 
 procedure TDAOPedidosProdutos.Inserir(pedidosProdutos: TPedidosProdutos);

@@ -10,7 +10,7 @@ Type
       procedure Salvar(const ObjetoPedido: TPedidos);
       procedure Inserir(const ObjetoPedido: TPedidos);
       procedure Excluir(NumeroPedido: Integer);
-      procedure ExcluirItemProduto(CodigoProduto: Integer);
+      procedure ExcluirItemProduto(CodigoPedidoProduto: Integer);
       Function ObterNumeroPedido(): Integer;
   end;
 
@@ -27,13 +27,13 @@ begin
   ObjDAOPedidos.Excluir(NumeroPedido);
 end;
 
-procedure TControllerPedidos.ExcluirItemProduto(CodigoProduto: Integer);
+procedure TControllerPedidos.ExcluirItemProduto(CodigoPedidoProduto: Integer);
 var
   ObjDAOPedidos: TDAOPedidos;
 begin
   ObjDAOPedidos := TDAOPedidos.create();
 
-  ObjDAOPedidos.ExcluirItemProduto(CodigoProduto);
+  ObjDAOPedidos.ExcluirItemProduto(CodigoPedidoProduto);
 
 end;
 

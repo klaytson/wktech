@@ -2,8 +2,8 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2022/04/13 12:04:45.000.315,=C:\Users\Desktop\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2022/04/13 12:05:57.000.529,C:\Users\Desktop\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Projetos\wktech\views\uFrmMain.dfm</Transaction>
     <Transaction>2022/04/13 12:05:57.000.529,C:\Users\Desktop\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Projetos\wktech\views\uFrmMain.pas</Transaction>
+    <Transaction>2022/04/13 12:05:57.000.529,C:\Users\Desktop\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Projetos\wktech\views\uFrmMain.dfm</Transaction>
     <Transaction>2022/04/13 12:06:28.000.550,C:\Users\Desktop\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Projetos\wktech\WKTech_Klaytson.dproj</Transaction>
     <Transaction>2022/04/13 12:58:52.000.643,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/13 12:59:15.000.313,=C:\Projetos\wktech\Unit1.pas</Transaction>
@@ -25,8 +25,8 @@
     <Transaction>2022/04/14 00:39:11.332,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 00:40:03.539,C:\Projetos\wktech\entities\ClassePedidos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 00:57:45.009,=C:\Projetos\wktech\Unit1.pas</Transaction>
-    <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
     <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/14 00:59:05.606,C:\Projetos\wktech\dao\uDMPrincipal.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
     <Transaction>2022/04/14 09:16:16.423,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 09:16:57.714,C:\Projetos\wktech\views\uFrmSelecaoCliente.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 09:16:57.714,C:\Projetos\wktech\views\uFrmSelecaoCliente.dfm=C:\Projetos\wktech\Unit1.dfm</Transaction>
@@ -48,6 +48,8 @@
     <Transaction>2022/04/14 16:34:41.613,C:\Projetos\wktech\controllers\ControllerProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 18:18:13.396,=C:\Projetos\wktech\Unit1.pas</Transaction>
     <Transaction>2022/04/14 18:18:31.312,C:\Projetos\wktech\dao\ClasseDAOPedidosProdutos.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/15 06:47:49.006,=C:\Projetos\wktech\Unit1.pas</Transaction>
+    <Transaction>2022/04/15 06:48:43.737,C:\Projetos\wktech\entities\ClasseMain.pas=C:\Projetos\wktech\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="controllers"/>
@@ -69,6 +71,7 @@
     <File Path="entities\ClassePedidos.pas"/>
     <File Path="entities\ClasseProdutos.pas"/>
     <File Path="entities\ClassePedidosProdutos.pas"/>
+    <File Path="entities\ClasseMain.pas"/>
     <File Path="views"/>
     <File Path="views\uFrmMain.pas"/>
     <File Path="views\uFrmMain.dfm"/>

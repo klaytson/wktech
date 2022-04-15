@@ -19,7 +19,8 @@ uses
   uFrmSelecaoProdutos in 'views\uFrmSelecaoProdutos.pas' {FrmSelecaoProdutos},
   ControllerPedidosProdutos in 'controllers\ControllerPedidosProdutos.pas',
   ControllerProdutos in 'controllers\ControllerProdutos.pas',
-  ClasseDAOPedidosProdutos in 'dao\ClasseDAOPedidosProdutos.pas';
+  ClasseDAOPedidosProdutos in 'dao\ClasseDAOPedidosProdutos.pas',
+  ClasseMain in 'entities\ClasseMain.pas';
 
 {$R *.res}
 

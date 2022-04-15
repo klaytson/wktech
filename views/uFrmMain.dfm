@@ -4,8 +4,8 @@ object FrmMain: TFrmMain
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'WKTech - Teste Klaytson Pereira'
-  ClientHeight = 573
-  ClientWidth = 640
+  ClientHeight = 599
+  ClientWidth = 544
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -28,96 +28,120 @@ object FrmMain: TFrmMain
   object GroupBox1: TGroupBox
     Left = 8
     Top = 44
-    Width = 624
-    Height = 89
+    Width = 525
+    Height = 114
     Caption = ' PEDIDO: '
     TabOrder = 1
-    object LblCodigo: TLabel
-      Left = 44
-      Top = 70
-      Width = 3
-      Height = 13
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object LblNomeCliente: TLabel
-      Left = 95
-      Top = 70
-      Width = 3
-      Height = 13
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object Label1: TLabel
-      Left = 398
-      Top = 20
-      Width = 92
+      Left = 148
+      Top = 21
+      Width = 107
       Height = 13
       Caption = 'Emiss'#227'o do Pedido:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label2: TLabel
-      Left = 432
-      Top = 60
-      Width = 58
+      Left = 384
+      Top = 65
+      Width = 67
       Height = 13
       Caption = 'Valor Total: '
-    end
-    object LblNumeroPedido: TLabel
-      Left = 81
-      Top = 17
-      Width = 3
-      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label3: TLabel
       Left = 21
-      Top = 17
-      Width = 54
+      Top = 21
+      Width = 60
       Height = 13
       Caption = 'Pedido N'#186': '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label4: TLabel
       Left = 20
-      Top = 52
-      Width = 63
+      Top = 65
+      Width = 69
       Height = 13
       Caption = 'Cod. Cliente:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label5: TLabel
       Left = 96
-      Top = 52
-      Width = 82
+      Top = 65
+      Width = 94
       Height = 13
       Caption = 'Nome do Cliente:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object EdtDataEmissao: TEdit
-      Left = 496
-      Top = 17
+      Left = 147
+      Top = 38
       Width = 121
       Height = 21
       Enabled = False
       TabOrder = 0
     end
     object EdtValorTotal: TEdit
-      Left = 496
-      Top = 56
-      Width = 121
+      Left = 383
+      Top = 81
+      Width = 128
       Height = 21
       Enabled = False
       TabOrder = 1
     end
+    object EdtNumeroPedido: TEdit
+      Left = 20
+      Top = 38
+      Width = 121
+      Height = 21
+      Enabled = False
+      TabOrder = 2
+    end
+    object EdtCodigoCliente: TEdit
+      Left = 21
+      Top = 81
+      Width = 69
+      Height = 21
+      Enabled = False
+      TabOrder = 3
+    end
+    object EdtNomeCliente: TEdit
+      Left = 96
+      Top = 81
+      Width = 281
+      Height = 21
+      Enabled = False
+      TabOrder = 4
+    end
   end
   object GroupBox2: TGroupBox
     Left = 8
-    Top = 139
-    Width = 624
+    Top = 163
+    Width = 525
     Height = 398
     Caption = '  ITENS DO PEDIDO: '
     TabOrder = 2
@@ -141,7 +165,7 @@ object FrmMain: TFrmMain
     object GridProdutos: TDBGrid
       Left = 3
       Top = 206
-      Width = 614
+      Width = 513
       Height = 189
       DataSource = DMPrincipal.DtsPedidosProdutos
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -152,55 +176,159 @@ object FrmMain: TFrmMain
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
       OnKeyDown = GridProdutosKeyDown
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'CodigoProduto'
+          Title.Caption = 'Cod. Prod.'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Descricao'
+          Title.Caption = 'Descri'#231#227'o do Produto'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Width = 180
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Quantidade'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ValorUnitario'
+          Title.Caption = 'Valor Unit'#225'rio'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Width = 85
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'subtotal'
+          Title.Caption = 'SubTotal'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CodigoPedidosProdutos'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Visible = False
+        end>
     end
     object Panel2: TPanel
       Left = 20
       Top = 51
-      Width = 601
+      Width = 565
       Height = 130
+      BevelOuter = bvNone
       TabOrder = 3
       Visible = False
       object Label6: TLabel
         Left = 8
         Top = 2
-        Width = 51
+        Width = 57
         Height = 13
         Caption = 'Pedido N'#186':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label7: TLabel
-        Left = 93
+        Left = 86
         Top = 2
-        Width = 68
+        Width = 75
         Height = 13
         Caption = 'Cod. Produto:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label8: TLabel
-        Left = 222
+        Left = 214
         Top = 2
-        Width = 42
+        Width = 48
         Height = 13
         Caption = 'Produto:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label9: TLabel
         Left = 8
         Top = 45
-        Width = 60
-        Height = 13
-        Caption = 'Quantidade:'
-      end
-      object Label10: TLabel
-        Left = 110
-        Top = 45
         Width = 68
         Height = 13
+        Caption = 'Quantidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label10: TLabel
+        Left = 86
+        Top = 45
+        Width = 80
+        Height = 13
         Caption = 'Valor Unit'#225'rio:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label11: TLabel
-        Left = 237
+        Left = 213
         Top = 45
-        Width = 55
+        Width = 64
         Height = 13
         Caption = 'Valor Total:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Edit1: TEdit
         Left = 8
@@ -209,45 +337,42 @@ object FrmMain: TFrmMain
         Height = 21
         Enabled = False
         TabOrder = 0
-        Text = 'Edit1'
       end
       object Edit2: TEdit
-        Left = 94
+        Left = 86
         Top = 18
         Width = 121
         Height = 21
         Enabled = False
         TabOrder = 1
-        Text = 'Edit2'
       end
       object Edit3: TEdit
-        Left = 221
+        Left = 213
         Top = 18
-        Width = 270
+        Width = 278
         Height = 21
         Enabled = False
         TabOrder = 2
-        Text = 'Edit3'
       end
       object Edit4: TEdit
         Left = 8
-        Top = 64
-        Width = 89
+        Top = 61
+        Width = 72
         Height = 21
         TabOrder = 3
         Text = '1'
+        OnExit = Edit4Exit
       end
       object Edit5: TEdit
-        Left = 110
-        Top = 64
+        Left = 86
+        Top = 61
         Width = 121
         Height = 21
         TabOrder = 4
-        Text = 'Edit5'
       end
       object Edit6: TEdit
-        Left = 237
-        Top = 64
+        Left = 213
+        Top = 61
         Width = 89
         Height = 21
         TabOrder = 5
@@ -264,8 +389,8 @@ object FrmMain: TFrmMain
     end
   end
   object BtnGravarPedido: TButton
-    Left = 505
-    Top = 543
+    Left = 413
+    Top = 567
     Width = 120
     Height = 25
     Caption = 'Gravar Pedido'
@@ -279,6 +404,7 @@ object FrmMain: TFrmMain
     Height = 25
     Caption = 'Visualizar Pedido'
     TabOrder = 4
+    OnClick = BtnVisualizarPedidoClick
   end
   object BtnCancelarPedido: TButton
     Left = 192

@@ -11,13 +11,10 @@ type
   TFrmMain = class(TForm)
     btnNovoPedido: TButton;
     GroupBox1: TGroupBox;
-    LblCodigo: TLabel;
-    LblNomeCliente: TLabel;
     EdtDataEmissao: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     EdtValorTotal: TEdit;
-    LblNumeroPedido: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -42,6 +39,9 @@ type
     BtnGravarPedido: TButton;
     BtnVisualizarPedido: TButton;
     BtnCancelarPedido: TButton;
+    EdtNumeroPedido: TEdit;
+    EdtCodigoCliente: TEdit;
+    EdtNomeCliente: TEdit;
     procedure btnNovoPedidoClick(Sender: TObject);
     procedure BtnSelecaoClick(Sender: TObject);
     procedure BtnConfirmarClick(Sender: TObject);
@@ -49,6 +49,8 @@ type
     procedure GridProdutosKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure BtnGravarPedidoClick(Sender: TObject);
+    procedure BtnVisualizarPedidoClick(Sender: TObject);
+    procedure Edit4Exit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,7 +65,7 @@ implementation
 
 {$R *.dfm}
 
-uses ClasseProdutos, uFrmSelecaoCliente, uFrmSelecaoProdutos,
+uses ClasseProdutos, uFrmSelecaoCliente, uFrmSelecaoProdutos, ClasseMain,
 ControllerPedidosProdutos, ClassePedidosProdutos, ControllerPedidos;
 
 procedure TFrmMain.BtnCancelarPedidoClick(Sender: TObject);
@@ -87,14 +89,24 @@ begin
   PedidosProdutos.CodigoProduto := StrToInt(Edit2.Text);
   PedidosProdutos.Quantidade := StrToInt(Edit4.Text);
   PedidosProdutos.ValorUnitario := StrToFloat(Edit5.Text);
+  PedidosProdutos.CodigoPedidosProdutos := GridProdutos.Columns[5].Field.Value;
 
   PedidosProdutos.ValorTotal := PedidosProdutos.Quantidade * PedidosProdutos.ValorUnitario;
 
-  ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
-  ControllerPedidosProdutos.Inserir(PedidosProdutos);
+  If(Tag = 0)Then
+    begin
+      ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
+      ControllerPedidosProdutos.Inserir(PedidosProdutos);
+    end
+  Else If(Tag = 1)Then
+    begin
+      ControllerPedidosProdutos := TControllerPedidosProdutos.Create();
+      ControllerPedidosProdutos.Atualizar(PedidosProdutos);
+    end;
 
   ControllerPedidosProdutos.abrir(PedidosProdutos.NumeroPedido);
   Panel2.Visible := False;
+  Tag := 0;
 end;
 
 procedure TFrmMain.BtnGravarPedidoClick(Sender: TObject);
@@ -123,6 +135,38 @@ begin
   FrmSelecaoProdutos.Free;
 end;
 
+procedure TFrmMain.BtnVisualizarPedidoClick(Sender: TObject);
+var
+  ControllerPedidoProdutos: TControllerPedidosProdutos;
+  NumeroPedido: String;
+  ObjMain: TMain;
+begin
+  Panel2.Visible := False;
+
+  ObjMain := TMain.Create();
+
+  NumeroPedido := InputBox('INFORME O NÚMERO DO PEDIDO', 'INFORME O NÚMERO DO PEDIDO', '');
+
+  ControllerPedidoProdutos := TControllerPedidosProdutos.Create();
+  ObjMain := ControllerPedidoProdutos.abrir(StrToInt(NumeroPedido));
+
+  EdtNumeroPedido.Text := IntToStr(ObjMain.NumeroPedido);
+  edtDataEmissao.Text := DateToStr(ObjMain.DataEmissao);
+  EdtCodigoCliente.Text := IntToStr(ObjMain.CodigoCliente);
+  EdtNomeCliente.Text := ObjMain.Nome;
+  EdtValorTotal.Text := FloatToStr(ObjMain.ValorTotal);
+end;
+
+procedure TFrmMain.Edit4Exit(Sender: TObject);
+Var
+  Quantidade: Integer;
+  ValorUnitario: Double;
+begin
+  Quantidade := StrToInt(edit4.Text);
+  ValorUnitario := StrToFloat(edit5.Text);
+  Edit6.Text := FloatToStr(ValorUnitario * Quantidade);
+end;
+
 procedure TFrmMain.GridProdutosKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
@@ -134,8 +178,22 @@ begin
     begin
        if MessageDlg('Deseja realmente apagar este produto do seu pedido?', mtConfirmation, [mbYes,mbNo],0) = mrYes then
        begin
-           ControllerPedido.ExcluirItemProduto(GridProdutos.Columns[2].Field.Value);
+           ControllerPedido.ExcluirItemProduto(GridProdutos.Columns[5].Field.Value);
        end;
+    end;
+
+  If Key = VK_RETURN then
+    begin
+      Tag := 1;
+      panel2.Visible := True;
+      Edit1.Text := EdtNumeroPedido.Text;
+      edit2.Text := GridProdutos.Columns[0].Field.Value;
+      edit3.Text := GridProdutos.Columns[1].Field.Value;
+      edit4.Text := GridProdutos.Columns[2].Field.Value;
+      edit5.Text := GridProdutos.Columns[3].Field.Value;
+      edit6.Text := GridProdutos.Columns[4].Field.Value;
+
+      edit4.SetFocus;
     end;
 end;
 
